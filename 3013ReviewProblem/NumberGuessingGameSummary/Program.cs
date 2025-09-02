@@ -1,14 +1,21 @@
 ﻿//generate a random number between 1 and 5
 using System;
 
+Console.WriteLine("Please input the lower bound value (lower values that could be guessed):");
 string answer = Console.ReadLine();
-int lowrerbound = int.Parse(answer);
+int lowerBound = 0;
+lowerBound = ValidateInput(answer);
+
+Console.WriteLine("Please input the upper bound value (higher values that could be guessed):");
+answer = Console.ReadLine();
+int upperBound = ValidateInput(answer, "Invalid input for upper bound, please try again.");
+
 for (int i = 0; i < int.MaxValue; i++)
 {
 
     Console.WriteLine("Please input the lower bound value (lower values that could be guessed):");
     string answer = Console.ReadLine();
-    int lowerBound = int.Parse(answer);
+
 
     Console.WriteLine("Please input the upper bound value (higher values that could be guessed):");
     int upperBound = int.Parse(answer2);
@@ -38,7 +45,80 @@ for (int i = 0; i < int.MaxValue; i++)
         }
     } while (Random != guess);
 
+
+
+
+    /// 
+    static int ValidateInput(string a, string msg = "Invaid input for lower bound, please try again.")
+{
+    int result;
+    while (int.TryParse(a, out result) == false)
+    {
+        Console.WriteLine(msg);
+        a = Console.ReadLine();
+    }
+
+    return result;
 }
+
+//try
+//{
+//    int lowerBound = int.Parse(answer);
+
+//}
+//catch (FormatException ex)
+//{
+//    Console.WriteLine("Please enter a number value and not a string value.");
+//}
+//catch (OverflowException ex)
+//{
+//    Console.WriteLine("The number you entered is too large");
+//}
+//catch (Exception ex)
+//{
+//    Console.WriteLine("I don't know what went wrong.");
+//}
+
+//Console.WriteLine ("Please input the upper bound value (higher values that could be guessed):");
+//answer = Console.ReadLine();
+//int upperbound = int.Parse(answer);
+
+//for (int i = 0; i < int.MaxValue; i++)
+//{
+
+//    Console.WriteLine("Please input the lower bound value (lower values that could be guessed):");
+//    string answer = Console.ReadLine();
+   
+
+//    Console.WriteLine("Please input the upper bound value (higher values that could be guessed):");
+//    int upperBound = int.Parse(answer2);
+
+//    //Datatype variable = value;
+//    Random r = new Random();
+//    var Random = r.Next(lowerBound, upperBound + 1); // generates a random number between 1 and 5
+//    Console.WriteLine("Welcome to our Game!");
+//    Console.WriteLine($"Generated a random umber with the value of " + Random + ".");
+//    int guess;
+//    int count = 0;
+
+//    do
+//    {
+//        Console.WriteLine($"Congratulations, you guessed it correctly and it took " + count + "attempts.");
+
+//        string userGuess = Console.ReadLine();
+//        int guess = ValidateInput(userGuess);
+//        Console.WriteLine($"You guessed: {userGuess}");
+//        if (Random == guess)
+//        {
+//            Console.WriteLine("Congratulations! You guessed the correctly!");
+//        }
+//        else
+//        {
+//            Console.WriteLine("Sorry, you guessed incorrectly. Better luck next time!");
+//        }
+//    } while (Random != guess);
+
+//}
 
 
 
